@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Laos-Mustache/polydivisible-number/issues"
   },
-  "homepage": "https://github.com/Laos-Mustache/polydivisible-number#readme"
+  "homepage": "https://github.com/Laos-Mustache/polydivisible-number#readme",
+  "dependencies": {
+    "big-integer": "^1.6.44"
+  }
 }
