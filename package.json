@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Laos-Mustache/polydivisible-number#readme",
   "dependencies": {
-    "big-integer": "^1.6.44"
+    "big-integer": "^1.6.44",
+    "lodash.range": "^3.2.0"
   }
 }
