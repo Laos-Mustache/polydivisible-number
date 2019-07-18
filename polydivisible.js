@@ -22,7 +22,7 @@ function polydivisible(radix){
 
     while(nList.length > 0){
         step();
-        console.log(nList.length, nList[nList.length-1]);
+        console.log(nList.length, currentPower, nList[nList.length-1]);
     }
 
     var n = bi();
@@ -37,13 +37,13 @@ function populateInitialList(radix){
 
 function step(){
 
-    while(nList[0].length === currentPower){
+    while(nList.length > 0 && nList[0].length === currentPower){
 
         var v = bi(nList.shift(), rx, alpha);
         v = v.times(rx);
     
-        for(let i = v; i < v + rx; i++){
-            if(i % (currentPower + 1) === 0){
+        for( let i = v; i.lesser(v.add(rx)); i = i.next() ){
+            if(i.mod(currentPower + 1).eq(bi.zero)){
                 nList.push(bi(i).toString(rx, alpha));
             }
         }
