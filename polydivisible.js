@@ -4,6 +4,7 @@ var range = require("lodash.range")
 var alpha = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var nList = [];
 var rx;
+var currentPower = 1;
 
 function polydivisible(radix){
 
@@ -16,7 +17,13 @@ function polydivisible(radix){
 
     console.log(nList);
 
+    nList.shift();
+    console.log(nList);
 
+    while(nList.length > 0){
+        step();
+        console.log(nList.length, nList[nList.length-1]);
+    }
 
     var n = bi();
 }
@@ -29,7 +36,22 @@ function populateInitialList(radix){
 }
 
 function step(){
+
+    while(nList[0].length === currentPower){
+
+        var v = bi(nList.shift(), rx, alpha);
+        v = v.times(rx);
     
+        for(let i = v; i < v + rx; i++){
+            if(i % (currentPower + 1) === 0){
+                nList.push(bi(i).toString(rx, alpha));
+            }
+        }
+
+    }
+
+    currentPower++;
+
 }
 
 module.exports.poly = polydivisible;
