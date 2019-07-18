@@ -21,8 +21,9 @@ function polydivisible(radix){
     console.log(nList);
 
     while(nList.length > 0){
-        step();
+        
         console.log(nList.length, currentPower, nList[nList.length-1]);
+        step();
     }
 
     var n = bi();
