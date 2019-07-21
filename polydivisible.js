@@ -105,8 +105,9 @@ function stepForNonRepeated(){
 
         var v = bi(nList.shift(), rx, alpha);
         v = v.times(rx);
+        v = v.next();
 
-        for( let i = v; i.lesser(v.add(rx)); i = i.next() ){
+        for( let i = v; i.lesser(v.add(rx).prev()); i = i.next() ){
             if(isValidNotRepeated(i.toString(rx, alpha)) && i.mod(currentPower + 1).eq(bi.zero)){
                 nList.push(bi(i).toString(rx, alpha));
             }
@@ -121,13 +122,13 @@ function isValidNotRepeated(n){
         return false;
     }
 
-    for(let i in n){
+    /* for(let i in n){
         var c = n[i];
         if(n.slice(+i + 1).includes(c))
             return false;
-    }
+    } */
 
-    if(n.includes("0"))
+    if(n.slice(0, n.length - 1).includes(n[n.length - 1]))
         return false;
 
     return true;
